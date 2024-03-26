@@ -11,8 +11,6 @@ function Login() {
    const [password, setPassword] = useState(null)
    const nav = useNavigate()
 
-   const nav = useNavigate()
-
 
    const handleSubmit = async (e) => {
       e.preventDefault()
