@@ -30,3 +30,27 @@ body{
     width  : 80px;
     border-radius: 50%;
 }
+
+.chat_right , .chat_left{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.chat_design{
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 10px 15px;
+    background-color: #89cff0;
+}
+
+.send_input{
+    background-color: rgba(0, 0, 0, 0.226);
+    color: white;
+    width: 50vw;
+}
+
+
+.chat_left{
+    justify-content: flex-start;
+}
