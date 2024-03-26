@@ -6,10 +6,13 @@ import axios from 'axios';
 import SignupForm from './Components/SignupForm';
 import Home from './Pages/Home';
 import './index.css'
+import {io} from 'socket.io-client'
 
 const App = () => {
 
   axios.defaults.baseURL = "http://localhost:4500"
+
+  const socket =  io("http://localhost:4500")
 
   return (
     <div className=''>
