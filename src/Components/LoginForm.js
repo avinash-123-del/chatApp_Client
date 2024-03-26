@@ -9,18 +9,19 @@ function Login() {
 
    const [email, setEmail] = useState(null)
    const [password, setPassword] = useState(null)
+   const nav = useNavigate()
 
    const handleSubmit = async (e) => {
       e.preventDefault()
 
       if ( email !== "" || password !== "") {
-         LoginForm(email, password).then(res => {console.log(res); toast.success(res.message)})
+         LoginForm(email, password).then(res => {console.log(res); toast.success(res.message); 
+            nav("/home")
+         })
       } else {
          toast.error("Please fill all the fields")
       }
    }
-
-   const nav = useNavigate()
 
    return (
       <div className='container'>
