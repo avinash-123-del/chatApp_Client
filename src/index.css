@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.leftChat{
+    display : flex;
+    justify-content : flex-start;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.leftChat .profile_img{
+    height: 50px;
+    width  : 50px;
+    border-radius: 50%;
+}
+
+.chatRight {
+    display : flex;
+    justify-content : flex-start;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.chatRight .profile_img {
+    height: 80px;
+    width  : 80px;
+    border-radius: 50%;
+}
