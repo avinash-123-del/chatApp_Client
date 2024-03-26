@@ -1,19 +1,18 @@
 import React from 'react'
-import UsersLists from '../Components/UsersList.js'
-import ChatArea from '../Components/ChatArea'
-
+import ChatLeft from '../Components/ChatLeft'
+import ChatRight from '../Components/ChatRight'
 
 const Home = () => {
-   return (
-      <div className='col-lg-12 d-flex'>
-         <div className='col-lg-3 users-list' >
-            <UsersLists />
-         </div>
-         <div className='col-lg-6 chat-area'>
-            <ChatArea />
-         </div>
+  return (
+    <div className='row'>
+      <div className='col-3'>
+        <ChatLeft />
       </div>
-   )
+      <div className='col-9'>
+        <ChatRight/>
+      </div>
+    </div>
+  )
 }
 
 export default Home

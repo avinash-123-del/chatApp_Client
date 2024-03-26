@@ -1,85 +1,32 @@
-body {
-          color: aliceblue !important;
-          background-color: black;
+body{
+    background-color: black;
+    color: white;
 }
 
-.users-list {
-          height: 100vh;
-          border: 1px solid #666363;
-          /* width: 100%; */
+.leftChat{
+    display : flex;
+    justify-content : flex-start;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
 }
 
-.chat-area {
-          height: 100vh;
-          width: 100%;
+.leftChat .profile_img{
+    height: 50px;
+    width  : 50px;
+    border-radius: 50%;
 }
 
-.chat_user_img{
-          height: 80px;
-          width: 80px;
-          border-radius: 50%;
-          object-fit: cover;
+.chatRight {
+    display : flex;
+    justify-content : flex-start;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
 }
 
-.chat_user_img img{
-          height: 100%;
-          width: 100%;
-          border-radius: 50%;
-          object-fit: cover;
-}
-
-.user_head{
-          background-color:rgb(28, 52, 59);
-          padding: 10px 0px;
-}
-
-.chat-section {}
-
-.chat_header {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          background-color: #666363;
-          gap: 20px;
-          padding: 10px 20px;
-}
-
-.user_list {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          gap: 20px;
-          margin: 10px 0px;
-          cursor: pointer;
-}
-
-.user_list img {
-          height: 50px;
-          width: 50px;
-          border-radius: 50%;
-
-}
-
-.chat_Footer{
-          position: fixed;
-          bottom: 0px;
-          width: 100%;
-          left: 30%;
-}
-
-.chat_Footer input{
-          width:50%;
-          background-color: rgba(0, 0, 0, 0.521);
-          color: white;
-          padding: 5px ;
-          margin-right: 10px;
-}
-
-.chat_Footer button{
-         background-color: rgb(97, 190, 245);
-         outline: none;
-         border-radius: 5px;
-         color: seashell;
-         border: none;
-         padding: 5px ;
+.chatRight .profile_img {
+    height: 80px;
+    width  : 80px;
+    border-radius: 50%;
 }

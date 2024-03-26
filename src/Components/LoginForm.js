@@ -11,12 +11,24 @@ function Login() {
    const [password, setPassword] = useState(null)
    const nav = useNavigate()
 
+   const nav = useNavigate()
+
+
    const handleSubmit = async (e) => {
       e.preventDefault()
 
-      if ( email !== "" || password !== "") {
-         LoginForm(email, password).then(res => {console.log(res); toast.success(res.message); 
-            nav("/home")
+      if (email !== "" || password !== "") {
+         LoginForm(email, password).then(res => {
+            console.log(res);
+
+            if (res.status === 1) {
+               localStorage.setItem("userId", res?.user?._id)
+               toast.success(res.message)
+               nav("/home")
+            }
+            else {
+               toast.error(res.message)
+            }
          })
       } else {
          toast.error("Please fill all the fields")
