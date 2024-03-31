@@ -41,3 +41,15 @@ export const getMessages = async (chatId) => {
    const res = await axios.get(`/message/${chatId}`)
    return res.data
 }
+
+export const sendMessage = async (chatId , senderId , text) => {
+   try{
+      const res = await axios.post(`/message`, {chatId , senderId, text})
+
+      return res
+   }
+   catch(error){
+      return error.response.data.message
+   
+   }
+}

@@ -15,25 +15,25 @@ const App = () => {
 
   const { setRoom , setSocket , setCheckOnline} = useContext(ApiContext)
 
-   useEffect(() => {
-    const newSocket = io("http://localhost:4500");
+  //  useEffect(() => {
+  //   const newSocket = io("http://localhost:4500");
 
-    newSocket.on("connect", () => {
-      console.log("connected", newSocket.id);
-      setRoom(newSocket.id)
-      setCheckOnline(`online ${newSocket.id}`)
-    });
+  //   newSocket.on("connect", () => {
+  //     console.log("connected", newSocket.id);
+  //     setRoom(newSocket.id)
+  //     setCheckOnline(`online ${newSocket.id}`)
+  //   });
 
-    return () => {
+  //   return () => {
       
-      newSocket.disconnect();
-      setCheckOnline(`offline ${newSocket.id}`)
-    };
-  }, []);
+  //     newSocket.disconnect();
+  //     setCheckOnline(`offline ${newSocket.id}`)
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    setSocket(io("http://localhost:4500"));
-  }, []);
+  // useEffect(() => {
+  //   setSocket(io("http://localhost:4500"));
+  // }, []);
 
   return (
     <div className=''>

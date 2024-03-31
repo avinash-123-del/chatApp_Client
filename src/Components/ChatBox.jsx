@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { getMessages, getOneUser } from './ApiHelper'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { getMessages, getOneUser, sendMessage } from './ApiHelper'
 
 import { format } from 'timeago.js'
 import { Button, Form } from 'react-bootstrap'
@@ -20,22 +20,24 @@ const ChatBox = ({ currentChat, userId }) => {
       getMessages(currentChat?._id).then(res => { console.log("res", res); setArrivalMessage(res.findChats) })
    }, [currentChat])
 
+   console.log("currentChat" , currentChat)
+
+   const socketInstance = useMemo(() => io("http://localhost:4500"), []);
+
    useEffect(() => {
-      const newSocket = io("http://localhost:4500");
-      setSocket(io("http://localhost:4500"));
-
-      newSocket.on("connect", () => {
-         console.log("connected", newSocket.id);
-         setRoom(newSocket.id)
-         setCheckOnline(`online ${newSocket.id}`)
+      setSocket(socketInstance);
+  
+      socketInstance.on("connect", () => {
+        console.log("connected", socketInstance.id);
+        setRoom(socketInstance.id);
+        setCheckOnline(`online ${socketInstance.id}`);
       });
-
+  
       return () => {
-
-         setCheckOnline(`offline ${newSocket.id}`)
-         newSocket.disconnect();
+        setCheckOnline(`offline ${socketInstance.id}`);
+        socketInstance.disconnect();
       };
-   }, []);
+    }, [socketInstance]);
 
    useEffect(() => {
 
@@ -43,6 +45,8 @@ const ChatBox = ({ currentChat, userId }) => {
          console.log("data", data)
          setArrivalMessage(prev => [...prev, data]);
       };
+
+      socket?.emit("user_online" , userId)
 
       socket?.on('get_message', handleMessage);
 
@@ -54,10 +58,13 @@ const ChatBox = ({ currentChat, userId }) => {
    const handleSubmit = (e) => {
       e.preventDefault()
       // setArrivalMessage(arrivalMessage.concat({ senderId: userId, text: textVal }))
-      setTextVal("")
+      // setTextVal("")
+
+      sendMessage(currentChat?._id, userId,textVal ).then(res => { console.log("res" , res)})
 
       socket.emit("send_message", {
-         senderId: userId, text: textVal, socketId: room
+         senderId: userId, text: textVal, socketId: room , userId : currentChat?.chatMembers?.find(e => e !== userId)
+         
       })
    }
 

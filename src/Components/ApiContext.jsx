@@ -8,6 +8,8 @@ const userId = localStorage.getItem('userId')
     const [currentChat, setCurrentChat] = useState(null)
     const [socket , setSocket] = useState(null)
     const [room , setRoom] = useState("")
+    const [checkOnline , setCheckOnline] = useState(null)
+
 
 
     const value = {
@@ -15,6 +17,7 @@ const userId = localStorage.getItem('userId')
         userId,
         socket, setSocket,
         room , setRoom,
+        checkOnline , setCheckOnline
     }
 
     return (
